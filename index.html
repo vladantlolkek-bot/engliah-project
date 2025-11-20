@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>СП-Брус — изделия из древесины</title>
+<link href="/favicon.ico?v=1" rel="shortcut icon" type="image/x-icon"/>
+<link href="/favicon.ico?v=1" rel="icon" type="image/x-icon"/>
+<link href="/favicon-16x16.png?v=1" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/favicon-32x32.png?v=1" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/android-chrome-192x192.png?v=1" rel="icon" sizes="192x192" type="image/png"/>
+<link href="/android-chrome-512x512.png?v=1" rel="icon" sizes="512x512" type="image/png"/>
+<!-- Для iOS (iPhone/iPad) -->
+<link href="/apple-touch-icon.png?v=1" rel="apple-touch-icon"/>
+<!-- Для PWA / Android -->
+<link href="/site.webmanifest?v=1" rel="manifest"/>
+<meta content="СП-Брус: оконный брус, мебельный щит, балки и стропильные системы из лиственницы и других пород. Производство до 9 м." name="description"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="оконный брус, мебельный щит, балки, стропильные системы, лиственница, СП-Брус" name="keywords">
+<meta content="СП-Брус — изделия из древесины" property="og:title"/>
+<meta content="Оконный брус, мебельный щит, балки и стропильные системы из лиственницы. Производство до 9 м." property="og:description"/>
+<meta content="URL_КАРТИНКИ_ДЛЯ_ПРЕВЬЮ" property="og:image"/>
+<meta content="website" property="og:type"/>
+<meta content="https://example.com/" property="og:url"/>
+<style>
+    :root {
+      --bg: #f1f5f9;
+      --fg: #0f172a;
+      --muted: #475569;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --accent: #0ea5e9;
+      --accent-contrast: #ffffff;
+      /* мягкие голубоватые тени для всех блоков */
+      --shadow: 0 10px 24px rgba(56, 189, 248, 0.25);
+      --radius: 16px;
+      --container: 1200px;
+      /* Фолбэк-изображение дерева (SVG), если сети нет или стоки блокируются */
+      --wood-fallback: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 800'><defs><linearGradient id='g' x1='0' y1='0' x2='0' y2='1'><stop offset='0%25' stop-color='%23b3835b'/><stop offset='100%25' stop-color='%238b5e34'/></linearGradient></defs><rect width='100%25' height='100%25' fill='url(%23g)'/><g opacity='.25' stroke='%236d4c2f' stroke-width='6' fill='none'><path d='M0 120 Q 300 80 600 120 T 1200 120'/><path d='M0 240 Q 300 200 600 240 T 1200 240'/><path d='M0 360 Q 300 320 600 360 T 1200 360'/><path d='M0 520 Q 300 480 600 520 T 1200 520'/></g></svg>");
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; color: var(--fg); background: var(--bg); }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; border-radius: var(--radius); }
+    .container { max-width: var(--container); margin-inline: auto; padding: 0 20px; }
+
+    header { position: sticky; top: 0; background: var(--card); border-bottom: 1px solid var(--border); z-index: 10; }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; }
+    .logo svg { width: 36px; height: 36px; display: block; }
+    nav ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; }
+    .btn { padding: 10px 18px; border-radius: 999px; border: 1px solid var(--border); background: var(--card); box-shadow: var(--shadow); transition: transform .25s ease; }
+    .btn.primary { background: var(--accent); color: var(--accent-contrast); border-color: transparent; }
+    .btn:hover { transform: translateY(-2px); }
+
+    /* ===== Герой с фоном дерева (двойной источник: сток + встроенный фолбэк) ===== */
+    .hero {
+      position: relative; color: #fff; text-align: center; padding: 120px 0 100px;
+      background-image: url('https://images.unsplash.com/photo-1588776814546-3fb6a46a6f8a?auto=format&fit=crop&w=1950&q=80'), var(--wood-fallback);
+      background-position: center; background-size: cover; background-repeat: no-repeat;
+    }
+    .hero::after { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,.45); }
+    .hero > .container { position: relative; z-index: 1; }
+    h1 { font-size: clamp(32px, 6vw, 56px); margin: 14px 0; }
+    .lead { font-size: 18px; color: #f1f5f9; max-width: 760px; margin: 0 auto 22px; }
+
+    /* ===== Общие секции с голубоватой тенью ===== */
+    section.card { padding: 70px 0; margin: 50px 0; border-radius: var(--radius); background: var(--card); box-shadow: var(--shadow); }
+    .section-title { font-size: 30px; margin: 0 0 14px; text-align: center; }
+    .section-sub { color: var(--muted); margin: 0 auto 26px; text-align: center; max-width: 900px; }
+
+    /* ===== О компании ===== */
+    .about { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+
+    /* ===== Услуги — единый список ===== */
+    .services-list { display: grid; gap: 24px; max-width: 980px; margin: 0 auto; }
+    .service-item { display: flex; gap: 20px; align-items: center; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px; }
+    .service-item img { width: 140px; height: 104px; object-fit: cover; border-radius: var(--radius); flex-shrink: 0; background: #e2e8f0; }
+    .service-item h3 { margin: 0 0 6px; font-size: 20px; }
+    .service-item p { margin: 0; color: var(--muted); }
+
+    footer { padding: 32px 0; border-top: 1px solid var(--border); color: var(--muted); text-align: center; }
+
+    /* Адаптив */
+    @media (max-width: 900px) { .about { grid-template-columns: 1fr; } }
+	/* Галерея в блоке "О компании" */
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.about-gallery {
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+.gallery-scroll {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding: 8px 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.gallery-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+.gallery-scroll::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 999px;
+}
+.gallery-scroll img {
+  min-width: 200px;
+  height: 150px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border-radius: var(--radius);
+}
+@media (max-width: 900px) {
+  .about {
+    grid-template-columns: 1fr;
+  }
+  .gallery-scroll img {
+    min-width: 180px;
+    height: 130px;
+  }
+}
+/* --- Современное оборудование --- */
+.equipment-section {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  padding: 80px 0;
+  margin: 40px 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.equipment-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.equipment-gallery {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.gallery-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 10px 0;
+  scrollbar-width: thin;
+  scrollbar-color: #2563eb transparent;
+}
+
+.gallery-slide {
+  position: relative;
+  min-width: 280px;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.gallery-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery-slide:hover img {
+  transform: scale(1.05);
+}
+
+.slide-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.65);
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.equipment-text {
+  padding: 20px;
+}
+
+.equipment-text .section-title {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.equipment-text .section-sub {
+  text-align: left;
+  margin-bottom: 20px;
+  color: #0f172a;
+}
+
+.equipment-text .btn {
+  margin-top: 20px;
+  display: inline-block;
+}
+
+@media (max-width: 900px) {
+  .equipment-content {
+    grid-template-columns: 1fr;
+  }
+  .gallery-slide {
+    min-width: 240px;
+    height: 180px;
+  }
+}
+.logo img {
+  height: 40px; /* регулируй под себя */
+  width: auto;
+  display: block;
+  border-radius: 6px; /* если хочешь скругление */
+}
+
+
+  /* Ваши текущие стили остаются без изменений */
+
+  
+  /* Ваши текущие стили остаются без изменений */
+
+  /* Swiper */
+  .services-swiper {
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 20px 0;
+  }
+
+/* Карточка товара */
+.swiper-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 300px;          /* фиксируем высоту карточки */
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  background: #fff;
+}
+
+/* Контейнер для изображения */
+.swiper-slide .image-container {
+  width: 100%;
+  height: 150px;          /* одинаковая высота под картинку */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  overflow: hidden;       /* обрезаем только если картинка слишком большая */
+}
+
+/* Изображение товара */
+.swiper-slide img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;    /* вписывается целиком без обрезки */
+}
+/* Текст */
+.swiper-slide h3 {
+  margin: 0 0 4px;
+  font-size: 14px;
+  text-align: center;
+  color: var(--fg);
+}
+
+.swiper-slide p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+  /* Текст в карточке */
+  .swiper-slide h3 {
+    margin: 0 0 3px;
+    font-size: 12px;
+    text-align: center;
+    color: var(--fg);
+  }
+
+  .swiper-slide p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 10px;
+    text-align: center;
+  }
+
+  /* Стрелки навигации */
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: var(--accent) !important;
+  }
+
+  /* Пагинация */
+  .swiper-pagination {
+    position: static !important;
+    margin-top: 20px !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: var(--accent) !important;
+  }
+
+
+
+
+/* Отступ для стрелок */
+.swiper-button-next,
+.swiper-button-prev {
+  top: 50% !important;
+  transform: translateY(-100%);
+}
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+  /* Шапка */
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+  .actions {
+    width: 100%;
+    text-align: center;
+  }
+  .btn {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  /* Герой-секция */
+  .hero {
+    padding: 80px 0 60px;
+  }
+  h1 {
+    font-size: 28px;
+  }
+  .lead {
+    font-size: 16px;
+  }
+
+  /* Секции */
+  .about {
+    grid-template-columns: 1fr;
+  }
+  .about-gallery .gallery-scroll img {
+    min-width: 160px;
+    height: 120px;
+  }
+
+  /* Оборудование */
+  .equipment-content {
+    grid-template-columns: 1fr;
+  }
+  .gallery-track {
+    gap: 12px;
+  }
+  .gallery-slide {
+    min-width: 220px;
+    height: 160px;
+  }
+
+  /* Слайдер услуг */
+  .swiper-slide {
+    width: 140px;
+  }
+  .swiper-slide .image-container {
+    height: 120px;
+  }
+  .swiper-slide h3 {
+    font-size: 12px;
+  }
+  .swiper-slide p {
+    font-size: 10px;
+  }
+
+  /* Контакты */
+  .section-sub {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Уменьшаем высоту header */
+  header {
+    position: relative;
+    padding: 8px 0;
+  }
+
+  /* Навигация в колонку, без лишних отступов */
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 6px 0 !important;
+  }
+
+  /* Логотип компактнее */
+  .brand {
+    gap: 6px;
+    margin-bottom: 4px;
+  }
+
+  .logo img {
+    height: 24px !important;
+    width: auto;
+  }
+
+  .brand span {
+    font-size: 14px;
+  }
+
+  /* Навигационное меню */
+  nav ul {
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav ul li a {
+    font-size: 14px;
+    padding: 4px 0;
+  }
+
+  /* Кнопка "Связаться" */
+  .actions {
+    width: 100%;
+    margin-top: 6px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+}
+@media (max-width: 768px) {
+  /* Блок оборудования: одна колонка */
+  .equipment-content {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  /* Уменьшаем размер слайдов */
+  .gallery-track {
+    gap: 12px;
+  }
+  .gallery-slide {
+    min-width: 220px !important;
+    height: 160px !important;
+  }
+  /* Текстовый блок под галереей */
+  .equipment-text {
+    padding: 12px;
+  }
+  .equipment-text .section-title {
+    font-size: 24px;
+  }
+  .equipment-text .section-sub {
+    font-size: 14px;
+  }
+}
+/* Стили для кнопок вращения */
+.rotate-controls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 5px;
+  z-index: 10;
+}
+
+.rotate-controls button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.rotate-controls button:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+/* Плавное вращение изображения */
+.gallery-slide img {
+  transition: transform 0.3s ease;
+}
+/* Swiper для ленты оборудования */
+.equipment-swiper {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.equipment-swiper .swiper-slide {
+  width: 280px;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.equipment-swiper .slide-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.equipment-swiper .slide-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.equipment-swiper .slide-image:hover img {
+  transform: scale(1.05);
+}
+
+.equipment-swiper .slide-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Стрелки навигации для Swiper */
+.equipment-swiper .swiper-button-next,
+.equipment-swiper .swiper-button-prev {
+  color: var(--accent) !important;
+}
+
+/* Пагинация для Swiper */
+.equipment-swiper .swiper-pagination {
+  position: static !important;
+  margin-top: 20px !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.equipment-swiper .swiper-pagination-bullet-active {
+  background: var(--accent) !important;
+}
+/* Swiper для ленты оборудования */
+.equipment-swiper {
+  width: 100%;
+  padding: 20px 0;
+  margin: 0 auto;
+}
+
+.equipment-swiper .swiper-wrapper {
+  align-items: center; /* Выравнивание слайдов по центру */
+}
+
+.equipment-swiper .swiper-slide {
+  width: 280px;
+  height: 220px;
+  margin: 0 auto; /* Центрирование слайда */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.equipment-swiper .slide-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.equipment-swiper .slide-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Растягиваем изображение на всю площадь */
+  transition: transform 0.3s ease;
+}
+
+.equipment-swiper .slide-image:hover img {
+  transform: scale(1.05);
+}
+
+.equipment-swiper .slide-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Стрелки навигации для Swiper */
+.equipment-swiper .swiper-button-next,
+.equipment-swiper .swiper-button-prev {
+  color: var(--accent) !important;
+}
+
+/* Пагинация для Swiper */
+.equipment-swiper .swiper-pagination {
+  margin-top: 20px !important;
+}
+
+/* Увеличиваем расстояние между слайдами */
+.equipment-swiper .swiper-slide + .swiper-slide {
+  margin-left: 30px; /* Расстояние между слайдами */
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .equipment-swiper .swiper-slide {
+    width: 220px;
+    height: 180px;
+  }
+
+  .equipment-swiper .swiper-slide + .swiper-slide {
+    margin-left: 20px; /* Меньшее расстояние на мобильных */
+  }
+}
+/* Стили для кнопок навигации Swiper в блоке оборудования */
+  .equipment-section .swiper-button-next,
+  .equipment-section .swiper-button-prev {
+    color: var(--accent) !important;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .equipment-section .swiper-button-next::after,
+  .equipment-section .swiper-button-prev::after {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  /* Swiper для ленты оборудования */
+.equipment-swiper {
+  width: 100%;
+  padding: 20px 0;
+  margin: 0 auto;
+}
+
+.equipment-swiper .swiper-wrapper {
+  align-items: center;
+}
+
+.equipment-swiper .swiper-slide {
+  width: 280px;
+  height: 220px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.equipment-swiper .slide-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.equipment-swiper .slide-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.equipment-swiper .slide-image:hover img {
+  transform: scale(1.05);
+}
+
+.equipment-swiper .slide-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Стрелки навигации для Swiper */
+.equipment-swiper .swiper-button-next,
+.equipment-swiper .swiper-button-prev {
+  color: var(--accent) !important;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.equipment-swiper .swiper-button-next::after,
+.equipment-swiper .swiper-button-prev::after {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Увеличиваем расстояние между слайдами */
+.equipment-swiper .swiper-slide + .swiper-slide {
+  margin-left: 30px;
+}
+
+/* Позиционирование стрелок */
+.equipment-swiper .swiper-button-next,
+.equipment-swiper .swiper-button-prev {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.equipment-swiper .swiper-button-next {
+  right: 10px;
+}
+
+.equipment-swiper .swiper-button-prev {
+  left: 10px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .equipment-swiper .swiper-slide {
+    width: 220px;
+    height: 180px;
+  }
+
+  .equipment-swiper .swiper-slide + .swiper-slide {
+    margin-left: 20px;
+  }
+}
+/* Современное оборудование */
+.equipment-section {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  padding: 80px 0;
+  margin: 40px 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.equipment-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.equipment-gallery {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Swiper для ленты оборудования */
+.equipment-swiper {
+  width: 100%;
+  height: 250px;
+}
+
+.equipment-swiper .swiper-wrapper {
+  align-items: center;
+}
+
+.equipment-swiper .swiper-slide {
+  width: 220px;
+  height: 180px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.equipment-swiper .slide-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.equipment-swiper .slide-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.equipment-swiper .slide-image:hover img {
+  transform: scale(1.05);
+}
+
+.equipment-swiper .slide-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Стрелки навигации для Swiper */
+.equipment-swiper .swiper-button-next,
+.equipment-swiper .swiper-button-prev {
+  color: var(--accent) !important;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.equipment-swiper .swiper-button-next::after,
+.equipment-swiper .swiper-button-prev::after {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Пагинация для Swiper */
+.equipment-swiper .swiper-pagination {
+  margin-top: 20px !important;
+}
+
+/* Адаптивность */
+@media (max-width: 900px) {
+  .equipment-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .equipment-swiper .swiper-slide {
+    width: 180px;
+    height: 150px;
+  }
+}
+
+}
+#equipment .swiper-slide {
+  padding: 0;             /* убираем внутренние отступы */
+  margin: 0;              /* убираем внешние отступы */
+  border-radius: 12px;
+  overflow: hidden;
+  height: 300px;          /* высота карточки */
+  display: block;         /* блок для точного размера */
+}
+
+#equipment .slide-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  display: block;
+}
+
+#equipment .slide-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* изображение полностью закрывает карточку */
+  display: block;
+}
+/* Карточка полностью с изображением на всю площадь */
+#equipment .slide-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* === Мы производим: уменьшить изображение и не обрезать === */
+#services .swiper-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 280px;              /* одинаковая высота карточек */
+}
+
+#services .swiper-slide .image-container {
+  height: 130px;              /* место под картинку поменьше */
+  overflow: visible;          /* ничего не режем */
+}
+
+#services .swiper-slide .image-container img {
+  width: auto !important;     /* не растягиваем вширь */
+  height: auto !important;    /* и не тянем ввысь */
+  max-width: 85% !important;  /* делаем чуть меньше контейнера */
+  max-height: 100% !important;
+  object-fit: contain !important; /* всегда целиком без обрезки */
+  display: block;
+  border-radius: 6px;
+  background: transparent;
+}
+/* === Мы производим: компактные карточки с крупным шрифтом === */
+#services .swiper-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 240px;              /* карточки стали ниже */
+  padding: 12px;
+}
+
+#services .swiper-slide .image-container {
+  height: 110px;              /* блок под картинку уменьшили */
+  overflow: visible;
+}
+
+#services .swiper-slide .image-container img {
+  width: auto !important;
+  height: auto !important;
+  max-width: 80% !important;  /* чуть меньше, чтобы не упиралось */
+  max-height: 100% !important;
+  object-fit: contain !important;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Заголовок / текст */
+#services .swiper-slide h3,
+#services .swiper-slide p {
+  font-size: 18px;            /* увеличенный шрифт */
+  font-weight: 600;
+  margin: 5px 0;
+  text-align: center;
+}
+
+/* Кнопка */
+#services .swiper-slide a {
+  font-size: 16px;            /* больше текст кнопки */
+  padding: 8px 14px;
+  border-radius: 8px;
+}
+/* === Современное оборудование: квадратные карточки на мобилках === */
+@media (max-width: 768px) {
+  #equipment .swiper-slide .slide-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;   /* делаем квадрат */
+    height: auto;          /* сброс фиксированной высоты */
+  }
+
+  #equipment .swiper-slide .slide-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     /* картинка вписывается без искажений */
+    border-radius: 10px;
+  }
+}
+/* Локальные стили только для #equipment — минимально и без конфликтов */
+#equipment .equipment-container { display:flex; align-items:center; justify-content:space-between; gap:40px; flex-wrap:wrap; max-width:1200px; margin-inline:auto; padding:0 20px; }
+#equipment .equipment-slider { flex:1; min-width:320px; position:relative; overflow:visible; }
+#equipment .equipment-text { flex:1; min-width:280px; }
+#equipment .equipment-text h2 { font-size:32px; margin:0 0 16px; }
+#equipment .equipment-text p { font-size:18px; margin:0 0 20px; color:#0f172a; line-height:1.5; }
+/* Swiper area */
+#equipment .equipment-swiper { width:100%; padding:8px 0; }
+#equipment .equipment-swiper .swiper-wrapper { align-items:center; }
+#equipment .equipment-swiper .swiper-slide { width:280px; height:180px; display:flex; align-items:center; justify-content:center; }
+#equipment .slide-image { width:100%; height:100%; border-radius:12px; overflow:hidden; box-shadow:0 6px 18px rgba(15,23,42,0.06); background:#f3f4f6; display:block; }
+#equipment .slide-image img { width:100%; height:100%; object-fit:cover; display:block; }
+#equipment .slide-caption { position:absolute; bottom:10px; left:12px; right:12px; text-align:center; color:#fff; font-weight:600; background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 100%); padding:6px 10px; border-radius:8px; }
+/* скрываем стандартные ::after у кнопок (на всякий случай) */
+#equipment #equipment-prev::after,
+#equipment #equipment-next::after { display:none !important; }
+/* Пагинация */
+#equipment .swiper-pagination { margin-top:12px; text-align:center; }
+/* Кнопки навигации (позиционируем по бокам) */
+#equipment #equipment-prev,
+#equipment #equipment-next {
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:#fff;
+  border: none;
+  box-shadow:0 6px 18px rgba(15,23,42,0.08);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  z-index:40;
+  pointer-events:auto;
+}
+#equipment #equipment-prev { left:-44px; }
+#equipment #equipment-next { right:-44px; }
+/* Мобильная адаптация: столбик, прячем стрелки */
+@media (max-width: 880px) {
+  #equipment .equipment-container { flex-direction:column; align-items:stretch; }
+  #equipment .equipment-slider { order:2; width:100%; min-width:0; }
+  #equipment .equipment-text { order:1; width:100%; margin-bottom:12px; }
+  #equipment #equipment-prev, #equipment #equipment-next { display:none; }
+  #equipment .equipment-swiper .swiper-slide {
+    width: 180px !important;
+    height: 180px !important;
+  }
+  #equipment .swiper-slide .slide-image {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+  }
+}
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Контейнер */
+.header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+}
+
+/* Логотип */
+.logo img {
+  height: 40px; /* можешь менять под размер */
+  width: auto;
+  display: block;
+}
+
+/* Навигация в ряд */
+.header-nav {
+  display: flex;
+  gap: 20px;
+}
+
+.header-nav a {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--fg);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.header-nav a:hover {
+  color: var(--accent);
+}
+
+
+
+
+</style>
+
+<link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+<!-- Swiper JS -->
+<script defer="" src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js">
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const swiper = new Swiper('.services-swiper', {
+      loop: true,
+      slidesPerView: 1,
+      spaceBetween: 20,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
+      },
+    });
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const swiper = new Swiper('.services-swiper', {
+      loop: true,
+      slidesPerView: 1,
+      spaceBetween: 10,
+      centeredSlides: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 15,
+        },
+        960: {
+          slidesPerView: 3,
+          spaceBetween: 20,
+        },
+      },
+    });
+  });
+</script>
+</link></meta></head>
+<body>
+<header>
+<div class="header-bar">
+<!-- ЛОГОТИП -->
+<div class="logo">
+<img alt="Логотип" src="https://images.unsplash.com/photo-1756310238993-fa1325c4a41a?q=80&amp;w=880&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+</div>
+<!-- НАВИГАЦИЯ -->
+<nav class="header-nav">
+<a href="#about">About Us</a>
+<a href="#services">Services</a>
+<a href="#contacts">Contacts</a>
+</nav>
+</div>
+</header>
+<section class="hero">
+<div class="container">
+<h1>SP-Brus — Wood Products</h1>
+<p class="lead">Main wood types: Siberian larch and Angara pine (own harvesting base in Krasnoyarsk region). Also work with oak, ash, alder.</p>
+<a class="btn primary" href="#contacts">Contact Us</a>
+</div>
+</section>
+<section class="card" id="about">
+<div class="container about">
+<div class="about-text">
+<h2 class="section-title">About Us</h2>
+<p class="section-sub">We manufacture planed and glued products up to 6 m, as well as custom items according to customer specifications. Production uses modern equipment from Germany, Italy, and the Czech Republic. We also create decorative CNC-milled products. We developed in‑house software for STL modeling, enabling production of any item in the shortest time.</p>
+</div>
+<div class="about-gallery">
+<div class="gallery-scroll">
+<img alt="Производство 1" loading="lazy" src="https://images.unsplash.com/photo-1756301522745-03c5069b77d6?q=80&amp;w=1074&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+<img alt="Производство 2" loading="lazy" src="https://images.unsplash.com/photo-1756301522696-dc8cbefc0437?w=500&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8Mnx8fGVufDB8fHx8fA%3D%3D"/>
+<img alt="Производство 3" loading="lazy" src="https://images.unsplash.com/photo-1756301522714-a1692cffd115?q=80&amp;w=735&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+<img alt="Производство 4" loading="lazy" src="https://images.unsplash.com/photo-1757025351166-dde8bb1692fa?q=80&amp;w=1074&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+<img alt="Производство 5" loading="lazy" src="https://images.unsplash.com/photo-1756996856633-592e09f9f44a?q=80&amp;w=1074&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+</img></div>
+</div>
+</div>
+</section>
+<!-- ========== СЕКЦИЯ: СОВРЕМЕННОЕ ОБОРУДОВАНИЕ (полностью готово) ========== -->
+<section id="equipment" style="background:#fff; padding:60px 0;">
+<style>
+    /* Локальные стили только для #equipment — минимально и без конфликтов */
+    #equipment .equipment-container { display:flex; align-items:center; justify-content:space-between; gap:40px; flex-wrap:wrap; max-width:1200px; margin-inline:auto; padding:0 20px; }
+    #equipment .equipment-slider { flex:1; min-width:320px; position:relative; overflow:visible; }
+    #equipment .equipment-text { flex:1; min-width:280px; }
+    #equipment .equipment-text h2 { font-size:32px; margin:0 0 16px; }
+    #equipment .equipment-text p { font-size:18px; margin:0 0 20px; color:#0f172a; line-height:1.5; }
+    /* Swiper area */
+    #equipment .equipment-swiper { width:100%; padding:8px 0; }
+    #equipment .equipment-swiper .swiper-wrapper { align-items:center; }
+    #equipment .equipment-swiper .swiper-slide { width:280px; height:180px; display:flex; align-items:center; justify-content:center; }
+    #equipment .slide-image { width:100%; height:100%; border-radius:12px; overflow:hidden; box-shadow:0 6px 18px rgba(15,23,42,0.06); background:#f3f4f6; display:block; }
+    #equipment .slide-image img { width:100%; height:100%; object-fit:cover; display:block; }
+    #equipment .slide-caption { position:absolute; bottom:10px; left:12px; right:12px; text-align:center; color:#fff; font-weight:600; background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 100%); padding:6px 10px; border-radius:8px; }
+
+    /* скрываем стандартные ::after у кнопок (на всякий случай) */
+    #equipment #equipment-prev::after,
+    #equipment #equipment-next::after { display:none !important; }
+
+    /* Пагинация */
+    #equipment .swiper-pagination { margin-top:12px; text-align:center; }
+
+    /* Кнопки навигации (позиционируем по бокам) */
+    #equipment #equipment-prev,
+    #equipment #equipment-next {
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      background:#fff;
+      border: none;
+      box-shadow:0 6px 18px rgba(15,23,42,0.08);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      z-index:40;
+      pointer-events:auto;
+    }
+    #equipment #equipment-prev { left:-44px; }
+    #equipment #equipment-next { right:-44px; }
+
+    /* Мобильная адаптация: столбик, прячем стрелки */
+    @media (max-width: 880px) {
+      #equipment .equipment-container { flex-direction:column; align-items:stretch; }
+      #equipment .equipment-slider { order:2; width:100%; min-width:0; }
+      #equipment .equipment-text { order:1; width:100%; margin-bottom:12px; }
+      #equipment #equipment-prev, #equipment #equipment-next { display:none; }
+      #equipment .equipment-swiper .swiper-slide { width:220px; height:150px; }
+    }
+	
+  </style>
+<div class="equipment-container">
+<!-- СЛАЙДЕР (слева) -->
+<div class="equipment-slider">
+<div class="swiper equipment-swiper" id="equipment-swiper">
+<div class="swiper-wrapper">
+<!-- слайд 1 -->
+<div class="swiper-slide">
+<div class="slide-image" style="position:relative;">
+<img alt="Пресс — оборудование 1" loading="lazy" src="https://images.unsplash.com/photo-1756306503154-fed3b4fc39ee?w=900&amp;auto=format&amp;fit=crop&amp;q=80"/>
+</div>
+</div>
+<!-- слайд 2 -->
+<div class="swiper-slide">
+<div class="slide-image" style="position:relative;">
+<img alt="Линия сращивания — оборудование 2" loading="lazy" src="https://images.unsplash.com/photo-1756306503837-95968a0470d1?w=900&amp;auto=format&amp;fit=crop&amp;q=80"/>
+</div>
+</div>
+<!-- слайд 3 -->
+<div class="swiper-slide">
+<div class="slide-image" style="position:relative;">
+<img alt="Фрезерный станок — оборудование 3" loading="lazy" src="https://images.unsplash.com/photo-1756996880356-7d960b52ff73?q=80&amp;w=1074&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+</div>
+</div>
+<!-- слайд 4 -->
+<div class="swiper-slide">
+<div class="slide-image" style="position:relative;">
+<img alt="Шлифовальный станок — оборудование 4" loading="lazy" src="https://images.unsplash.com/photo-1756996880718-84fc68dfb1f5?q=80&amp;w=735&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+</div>
+</div>
+<!-- слайд 5 -->
+<div class="swiper-slide">
+<div class="slide-image" style="position:relative;">
+<img alt="Токарный станок — оборудование 5" loading="lazy" src="https://images.unsplash.com/photo-1756996879215-c415f0c224b9?q=80&amp;w=735&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+</div>
+</div>
+</div>
+<!-- пагинация -->
+<div class="swiper-pagination"></div>
+</div>
+<!-- ВЫНЕСЕННЫЕ СТРЕЛКИ (SVG внутри) -->
+<button aria-label="Предыдущий" id="equipment-prev">
+<svg fill="none" height="18" stroke="#0ea5e9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18"><path d="M15 18l-6-6 6-6"></path></svg>
+</button>
+<button aria-label="Следующий" id="equipment-next">
+<svg fill="none" height="18" stroke="#0ea5e9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18"><path d="M9 6l6 6-6 6"></path></svg>
+</button>
+</div>
+<!-- ТЕКСТ (справа) -->
+<div class="equipment-text">
+<h2>Modern Equipment</h2>
+<p>We use high‑precision machines allowing production of construction components with perfect geometry and high reliability.</p>
+<a class="btn" href="#contacts" style="display:inline-block; background:linear-gradient(90deg,#4facfe 0%,#00f2fe 100%); color:#fff; padding:12px 22px; border-radius:28px; text-decoration:none; font-weight:600;">Learn More</a>
+</div>
+</div>
+<!-- Инициализация Swiper (надежно: удаляем старый инстанс если есть) -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // если где-то уже есть instance, уничтожим (чтобы избежать конфликтов)
+      try {
+        if (window.equipmentSwiper && typeof window.equipmentSwiper.destroy === 'function') {
+          window.equipmentSwiper.destroy(true, true);
+        }
+      } catch (e) {
+        // ничего делать не нужно
+        console.warn('Ошибка при попытке уничтожить старый equipmentSwiper:', e);
+      }
+
+      // создаём новый
+      window.equipmentSwiper = new Swiper('#equipment-swiper', {
+        loop: true,
+        slidesPerView: 1,
+        spaceBetween: 20,
+        navigation: {
+          nextEl: '#equipment-next',
+          prevEl: '#equipment-prev'
+        },
+        pagination: {
+          el: '#equipment-swiper .swiper-pagination',
+          clickable: true
+        },
+        breakpoints: {
+          640: { slidesPerView: 2 },
+          960: { slidesPerView: 3 }
+        }
+      });
+    });
+  </script>
+</section>
+<section class="card" id="services">
+<div class="container">
+<h2 class="section-title">We Produce</h2>
+<p class="section-sub">
+</p>
+<!-- Swiper -->
+<div class="swiper services-swiper">
+<div class="swiper-wrapper">
+<!-- Слайд 1: Оконный брус -->
+<div class="swiper-slide">
+<div class="image-container">
+<img alt="Оконный брус" loading="lazy" src="https://avatars.mds.yandex.net/i?id=cf4bc69fcc947685b8e554910bd03b16_l-5279184-images-thumbs&amp;n=13">
+</img></div>
+<div>
+<h3>Window Beam</h3>
+<p>Precise geometry and stability.</p>
+</div>
+</div>
+<!-- Слайд 2: Щит мебельный -->
+<div class="swiper-slide">
+<div class="image-container">
+<img alt="Щит мебельный" loading="lazy" src="https://dpft.ru/wp-content/uploads/2019/01/dub-shhit-sr-40-600x400.jpg">
+</img></div>
+<div>
+<h3>Furniture Board</h3>
+<p>Smooth calibrated surface.</p>
+</div>
+</div>
+<!-- Слайд 3: Террасные доски -->
+<div class="swiper-slide">
+<div class="image-container">
+<img alt="Террасные доски" loading="lazy" src="https://avatars.mds.yandex.net/i?id=69ce36ed1683b700c57a4263e4a0301f_l-3995454-images-thumbs&amp;n=13">
+</img></div>
+<div>
+<h3>Deck Boards</h3>
+<p>Resistant to moisture and mechanical stress.</p>
+</div>
+</div>
+<!-- Слайд 4: Планкен -->
+<div class="swiper-slide">
+<div class="image-container">
+<img alt="Планкен" loading="lazy" src="https://promlesstroy.ru/upload/iblock/d92/d926915be28f3f4213c93269645c5f36.jpg">
+</img></div>
+<div>
+<h3>Planken</h3>
+<p>Ideal for facade finishing.</p>
+</div>
+</div>
+<!-- Слайд 5: Стропильные системы -->
+<div class="swiper-slide">
+<div class="image-container">
+<img alt="Стропильные системы" loading="lazy" src="https://asremonta.com/wp-content/uploads/2018/11/kr2.jpg">
+</img></div>
+<div>
+<h3>Rafter Systems</h3>
+<p>Reliable roofing structures.</p>
+</div>
+</div>
+<!-- Слайд 6: Доски для пола -->
+<div class="swiper-slide">
+<div class="image-container">
+<img alt="Доски для пола" loading="lazy" src="https://avatars.mds.yandex.net/get-marketpic/1708724/market_wLyQHIchhmkv6HBM3Dyckg/orig"/>
+</div>
+<div>
+<h3>Floor Boards</h3>
+<p>Strong and wear‑resistant.</p>
+</div>
+</div>
+<!-- Слайд 7: Заготовки для лестниц -->
+<div class="swiper-slide">
+<div class="image-container">
+<img alt="Заготовки для лестниц" loading="lazy" src="https://cache3.youla.io/files/images/780_780/5d/ae/5daea989f8efdc60ed708134.jpg"/>
+</div>
+<div>
+<h3>Stair Blanks</h3>
+<p>Accurate dimensions and processing.</p>
+</div>
+</div>
+</div>
+<!-- Стрелки навигации -->
+<div class="swiper-button-next"></div>
+<div class="swiper-button-prev"></div>
+<!-- Пагинация -->
+<div class="swiper-pagination"></div>
+</div>
+</div>
+</section>
+<section class="card" id="contacts">
+<div class="container">
+<h2 class="section-title">Contacts</h2>
+<p class="section-sub">
+      Email: <a href="mailto:alerse73@gmail.com ">alerse73@gmail.com </a> ·  
+      Тел.: <a href="tel:+375447734313">+375 44 773-43-13</a> ·  
+      <a href="https://t.me/Sepik73" rel="noopener" target="_blank">Telegram</a> ·
+	  <a href="https://wa.me/375447734313" rel="noopener" target="_blank">WhatsApp</a> ·
+	  <a href="viber://chat?number=%2B375447734313">Viber</a> ·
+	  <a href="https://max.ru/u/f9LHodD0cOJXxdTCal-1Qh2bJCgbHBlWXz-x2xXaVC5QdBEHQ5D-knmMh8Y" rel="noopener" target="_blank">MAX Messenger</a>
+</p>
+<p class="section-sub">Address: Novodvorskiy 137 district, Gatovo, Minsk region 223017, Belarus</p>
+<!-- Карта -->
+<div style="margin-top:30px;">
+<iframe frameborder="0" height="400" src="https://yandex.ru/map-widget/v1/?um=constructor%3Ae443c8c93a497a1b9cf571f5914540b30b934afb99121ebd594cc1fa14a88489&amp;source=constructor" style="border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1);" width="100%">
+</iframe>
+</div>
+</div>
+</section>
+<footer>
+<div class="container">© <span id="year"></span> СП-Брус. Все права защищены.</div>
+</footer>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+ document.addEventListener('DOMContentLoaded', function() {
+  // Swiper для услуг
+  const servicesSwiper = new Swiper('.services-swiper', {
+    loop: true,
+    slidesPerView: 1,
+    spaceBetween: 20,
+    navigation: {
+      nextEl: '.services-swiper .swiper-button-next',
+      prevEl: '.services-swiper .swiper-button-prev',
+    },
+    pagination: {
+      el: '.services-swiper .swiper-pagination',
+      clickable: true,
+    },
+    breakpoints: {
+      768: { slidesPerView: 2 },
+      1024: { slidesPerView: 3 },
+    },
+  });
+
+  // Swiper для ленты оборудования
+  const equipmentSwiper = new Swiper('.equipment-swiper', {
+    loop: true,
+    slidesPerView: 'auto',
+    centeredSlides: false,
+    spaceBetween: 20,
+    navigation: {
+      nextEl: '.equipment-swiper .swiper-button-next',
+      prevEl: '.equipment-swiper .swiper-button-prev',
+    },
+    pagination: {
+      el: '.equipment-swiper .swiper-pagination',
+      clickable: true,
+    },
+  });
+});
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js">
+</script>
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+      new Swiper('#equipment-swiper', {
+        loop: true,
+        slidesPerView: 'auto',
+        centeredSlides: true,
+        spaceBetween: 20,
+        navigation: {
+          nextEl: '#equipment-next',
+          prevEl: '#equipment-prev'
+        },
+        pagination: {
+          el: '#equipment-swiper .swiper-pagination',
+          clickable: true
+        },
+        breakpoints: {
+          640: {
+            slidesPerView: 'auto',
+            centeredSlides: true,
+          },
+          960: {
+            slidesPerView: 3,
+            centeredSlides: false,
+          }
+        }
+      });
+    });
+  </script>
+</body></html>
